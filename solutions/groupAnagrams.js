@@ -54,9 +54,15 @@ groupAnagrams(strs);
         //im going to need a way to group the encoded strs with an index; perhaps a map?
         console.log(strs);
         sortedSplitStrs = [];
+        groupedObject = {};
         for (str of strs){
-            sortedSplitStrs.push(str.split("").sort().join(""));
+            let newStr = str.split("").sort().join("");
+            if(!groupedObject[newStr]){
+                groupedObject[newStr] = [];
+            }
+            groupedObject[newStr].push(str);
         }
+        console.log(Object.values(groupedObject));
         sortedSplitStrs.sort();
         //i need to look up a built in function to check if there is a duplicate of the string -- if there is then I know it has more than one anagram in the strs, then I can log it
         // find out if str is unique in the sortedStrs;
